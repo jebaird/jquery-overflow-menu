@@ -98,7 +98,6 @@ $.widget( "jb.overflowmenu", {
 	
 	
 	resize: function() {
-		console.log( 'resize')
 		// trigger resize event on window || this.element
 		var $items = this._getItems(),
 			vHeight = this.visMenuHeight;
