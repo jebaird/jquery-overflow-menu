@@ -77,9 +77,10 @@ $.widget( "jb.overflowmenu", {
 			self.toggle()
 		})
 		
-		
-		this._setOption( 'triggerOn', this.options.triggerOn )
+		//has to be set first
 		this._setOption( 'label', this.options.label )
+		this._setOption( 'triggerOn', this.options.triggerOn )
+		
 			
 	},
 
