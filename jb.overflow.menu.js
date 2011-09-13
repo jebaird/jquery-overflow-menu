@@ -81,7 +81,19 @@ $.widget( "jb.overflowmenu", {
 	},
 
 	destroy: function() {
-			//TODO: add Clearup
+		this.element
+			.removeClass('jb-overflowmenu')
+		
+		this.visMenu
+			.removeClass('jb-overflowmenu-menu-primary jb-overflowmenu-helper-postion')
+		
+		this.options.triggerOn.unbind( 'resize.overflowmenu' );
+		
+		this.hiddenContainer.remove()
+		
+		
+		//TODO: possibly clean up the height + right on the ul
+		
 		$.Widget.prototype.destroy.apply( this, arguments );
 	},
 	

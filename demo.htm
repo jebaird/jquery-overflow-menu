@@ -35,19 +35,29 @@
 		</nav>
 		
 		
+		<br>
+		<a class="destroy" href="javascript://"> destroy</a> 
+		
 		</div>
 		
 		
 		<script type="text/javascript">
-			$('#target').overflowmenu()
+			$( document ).ready(function(){
+				var target = $('#target').overflowmenu();
+				
+				$('.destroy').click(function(){
+					target.overflowmenu('destroy');
+					return false;
+				})
+			})
 			
 		</script>
 		<style type="text/css">
 			#wrapper{
 				margin: 20px;
 			}
-			.jb-overflowmenu-items-parent{
-				
+			.item {
+				padding: 0px 8px;
 			}
 			
 		</style>
