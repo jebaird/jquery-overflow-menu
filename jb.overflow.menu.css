@@ -19,7 +19,7 @@
 	overflow: hidden;
 }
 /*suggested that items are inline block or float with clearfix*/
-.jb-overflowmenu .jb-overflowmenu-menu-primary > * {display: inline-block;}
+/*.jb-overflowmenu .jb-overflowmenu-menu-primary > * {display: inline-block;}*/
 
 /*holds the overflow menu and label*/
 .jb-overflowmenu .jb-overflowmenu-container {
@@ -27,27 +27,15 @@
 	left: auto;
 	bottom: 0px;
 }
-
-.jb-overflowmenu .jb-overflowmenu-container .jb-overflowmenu-menu-secondary-handle {
-/*	set padding to fix alignment*/
-	padding: 2px;
-}
 .jb-overflowmenu .jb-overflowmenu-container .jb-overflowmenu-menu-secondary {
 	top: auto;
 	bottom: auto;
 	left: auto;
 	
-	background: none repeat scroll 0 0 #FFFFFF;
-	border: 1px solid black;
 	display: none;
-	padding: 5px;
 	position: absolute;
 	width: 150px;
 	
 	z-index: 100000;
 	
-}
-/*items in overflow*/
-.jb-overflowmenu .jb-overflowmenu-container .jb-overflowmenu-menu-secondary > * {
-	float: none;
 }
