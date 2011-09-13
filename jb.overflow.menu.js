@@ -52,9 +52,8 @@ $.widget( "jb.overflowmenu", {
 						.children( this.options.itemsParentTag )
 						.addClass( 'jb-overflowmenu-menu-primary jb-overflowmenu-helper-postion' );
 		
-		if( this.options.guessHeight ){
-			this._setHeight();	
-		}
+		this._setHeight();	
+	
 		
 								
 		//TODO: allow the user to change the markup for this because they might not be using ul -> li
@@ -99,9 +98,10 @@ $.widget( "jb.overflowmenu", {
 	
 	
 	resize: function() {
+		console.log( 'resize')
 		// trigger resize event on window || this.element
 		var $items = this._getItems(),
-			vHeight = this.visMenuHeight
+			vHeight = this.visMenuHeight;
 	    //remove all of the actions out of the overflow menu
 	    this.hiddenMenu.children().remove();
 	    
@@ -133,9 +133,14 @@ $.widget( "jb.overflowmenu", {
 		return this.visMenu.find( this.options.items );
 	},
 	_setHeight: function(){
-		//get the first items height and set that as the height of the parent
-		this.visMenuHeight = this.visMenu.find( this.options.items ).filter(':first').outerHeight();
-		this.visMenu.css('height', this.visMenuHeight )
+		if( this.options.guessHeight ){
+			//get the first items height and set that as the height of the parent
+			this.visMenuHeight = this.visMenu.find( this.options.items ).filter(':first').outerHeight();
+			this.visMenu.css('height', this.visMenuHeight )
+			
+		}else{
+			this.visMenuHeight = this.element.innerHeight();
+		}
 		
 	},
 	_setOption: function( key, value ) {
