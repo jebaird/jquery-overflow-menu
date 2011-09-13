@@ -41,9 +41,8 @@ $.widget( "jb.overflowmenu", {
 		//attempt to guess the height of the menu, if not the target element needs to have a height
 		guessHeight: true,
 		
-		noItemsCallback: function( ui ){
-			ui.secondaryMenu.hide();
-		}
+		//called after the all of the menu positions have been recalulated and cloned to there proper menu
+		change: $.noop
 		
 	},
 
@@ -116,9 +115,7 @@ $.widget( "jb.overflowmenu", {
 	    .clone( true )
 	    .prependTo( this.secondaryMenu );
 	    
-	    if( this.secondaryMenu.children().length == 0 ){
-	    	this.secondaryMenu.hide();
-	    }
+	    this._trigger( 'change', {}, this._uiHash() );
 
 	},
 	
@@ -171,6 +168,14 @@ $.widget( "jb.overflowmenu", {
 		
 		$.Widget.prototype._setOption.apply( this, arguments );
 	},
+	
+	_uiHash: function(){
+		return {
+			pirmary: this.primaryMenu,
+			secondary: this.secondaryMenu,
+			container: this.secondaryMenuContainer 
+		};
+	}
 
 });
 

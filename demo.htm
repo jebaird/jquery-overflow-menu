@@ -43,7 +43,11 @@
 		
 		<script type="text/javascript">
 			$( document ).ready(function(){
-				var target = $('#target').overflowmenu();
+				var target = $('#target').overflowmenu({
+					change: function( e, ui ){
+						console.log( 'change', ui );
+					}
+				});
 				
 				$('.destroy').click(function(){
 					target.overflowmenu('destroy');
