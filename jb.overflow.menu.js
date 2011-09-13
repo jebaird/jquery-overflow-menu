@@ -39,7 +39,12 @@ $.widget( "jb.overflowmenu", {
 		triggerOn: $( window ),
 		
 		//attempt to guess the height of the menu, if not the target element needs to have a height
-		guessHeight: true
+		guessHeight: true,
+		
+		noItemsCallback: function( ui ){
+			ui.secondaryMenu.hide();
+		}
+		
 	},
 
 	_create: function() {
@@ -48,7 +53,7 @@ $.widget( "jb.overflowmenu", {
 		this.element
 			.addClass('jb-overflowmenu');
 			
-		this.visMenu = this.element
+		this.primaryMenu = this.element
 						.children( this.options.itemsParentTag )
 						.addClass( 'jb-overflowmenu-menu-primary jb-overflowmenu-helper-postion' );
 		
@@ -57,7 +62,7 @@ $.widget( "jb.overflowmenu", {
 		
 								
 		//TODO: allow the user to change the markup for this because they might not be using ul -> li
-		this.hiddenContainer = $(
+		this.secondaryMenuContainer = $(
 							[
 								'<div class="jb-overflowmenu-container jb-overflowmenu-helper-postion">',
 									'<a href="javascript://" class="jb-overflowmenu-menu-secondary-handle"></a>',
@@ -67,9 +72,9 @@ $.widget( "jb.overflowmenu", {
 						)
 						.appendTo( this.element )
 						
-		this.hiddenMenu = this.hiddenContainer.find('ul');
+		this.secondaryMenu = this.secondaryMenuContainer.find('ul');
 		
-		this.hiddenContainer.bind('click.overflowmenu', function(){
+		this.secondaryMenuContainer.bind('click.overflowmenu', function(){
 			self.toggle()
 		})
 		
@@ -83,12 +88,12 @@ $.widget( "jb.overflowmenu", {
 		this.element
 			.removeClass('jb-overflowmenu')
 		
-		this.visMenu
+		this.primaryMenu
 			.removeClass('jb-overflowmenu-menu-primary jb-overflowmenu-helper-postion')
 		
 		this.options.triggerOn.unbind( 'resize.overflowmenu' );
 		
-		this.hiddenContainer.remove()
+		this.secondaryMenuContainer.remove()
 		
 		
 		//TODO: possibly clean up the height + right on the ul
@@ -100,45 +105,45 @@ $.widget( "jb.overflowmenu", {
 	resize: function() {
 		// trigger resize event on window || this.element
 		var $items = this._getItems(),
-			vHeight = this.visMenuHeight;
+			vHeight = this.primaryMenuHeight;
 	    //remove all of the actions out of the overflow menu
-	    this.hiddenMenu.children().remove();
+	    this.secondaryMenu.children().remove();
 	    
 	    //find all of the that arent visiable and add/clone them to the overflow menu 
 	    $items.filter(function(){
 	        return this.offsetTop + $(this).height() > vHeight;
 	    })
 	    .clone( true )
-	    .prependTo( this.hiddenMenu );
+	    .prependTo( this.secondaryMenu );
 	    
-	    if( this.hiddenMenu.children().length == 0 ){
-	    	this.hiddenMenu.hide();
+	    if( this.secondaryMenu.children().length == 0 ){
+	    	this.secondaryMenu.hide();
 	    }
 
 	},
 	
 	//more menu opitons
 	show: function(){
-		this.hiddenContainer.find('.jb-overflowmenu-menu-secondary').show();
+		this.secondaryMenuContainer.find('.jb-overflowmenu-menu-secondary').show();
 	},
 	hide: function(){
-		this.hiddenContainer.find('.jb-overflowmenu-menu-secondary').hide();
+		this.secondaryMenuContainer.find('.jb-overflowmenu-menu-secondary').hide();
 	},
 	toggle: function(){
-		this.hiddenContainer.find('.jb-overflowmenu-menu-secondary').toggle();
+		this.secondaryMenuContainer.find('.jb-overflowmenu-menu-secondary').toggle();
 	},
 	
 	_getItems: function(){
-		return this.visMenu.find( this.options.items );
+		return this.primaryMenu.find( this.options.items );
 	},
 	_setHeight: function(){
 		if( this.options.guessHeight ){
 			//get the first items height and set that as the height of the parent
-			this.visMenuHeight = this.visMenu.find( this.options.items ).filter(':first').outerHeight();
-			this.visMenu.css('height', this.visMenuHeight )
+			this.primaryMenuHeight = this.primaryMenu.find( this.options.items ).filter(':first').outerHeight();
+			this.primaryMenu.css('height', this.primaryMenuHeight )
 			
 		}else{
-			this.visMenuHeight = this.element.innerHeight();
+			this.primaryMenuHeight = this.element.innerHeight();
 		}
 		
 	},
@@ -157,10 +162,10 @@ $.widget( "jb.overflowmenu", {
 		}else if( key == 'label' && value ){
 			//figure out the width of the hadel and subtract that from the parend with and set that as the right
 			
-			var width = this.hiddenContainer.find('.jb-overflowmenu-menu-secondary-handle')
+			var width = this.secondaryMenuContainer.find('.jb-overflowmenu-menu-secondary-handle')
 						.html( value )
 						.outerWidth();
-			this.visMenu.css( 'right',  width ) 
+			this.primaryMenu.css( 'right',  width ) 
 					
 		}
 		
