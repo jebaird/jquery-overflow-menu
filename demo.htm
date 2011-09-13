@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
+		
+		<script type="text/javascript" src="jb.overflow.menu.js"></script>
+		
+		<!-- 		include your own reset -->
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssreset/reset-min.css">
+		
+		<link rel="stylesheet" type="text/css" href="jb.overflow.menu.css" />
+		
+		
+	</head>
+	<body>
+		
+		<div id="wrapper" class="f2">
+		<div><h1>Jb overflow menu</h1>
+		<p>If you see seven menu options, resize your browser window till on of the them is hidden. You will see the more text turn from black/gray depending of if there is a menu options hidden in the overflow menu. Click on the more to view the options.</p></div>
+		
+		<p> For this to work you have to set a height for the ul, or have </p>
+		
+		<nav id="target" class="jb-overflowmenu">
+			<ul class="">
+				<li class="item"><a href="#">option one</a></li>
+		        <li class="item"><a href="#">option two</a></li>
+		        <li class="item"><a href="#">option three</a></li>
+		        <li class="item"><a href="#">option four</a></li>
+		        <li class="item"><a href="#">option five</a></li>
+		        <li class="item"><a href="#">option six</a></li>
+		        <li class="item"><a href="#">option seven</a></li>
+			</ul>
+			
+		</nav>
+		
+		
+		</div>
+		
+		
+		<script type="text/javascript">
+			$('#target').overflowmenu()
+			
+		</script>
+		<style type="text/css">
+			#wrapper{
+				margin: 20px;
+			}
+			.jb-overflowmenu-items-parent{
+				
+			}
+			
+		</style>
+
+
+	</body>
+</html>
