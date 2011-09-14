@@ -35,7 +35,7 @@ $.widget( "jb.overflowmenu", {
 		items: '> *',
 		itemsParentTag: 'ul',
 		label: 'more',
-		//call the resize method when this element changes size, with out a speical event window is the only element that this gets called on
+		//call the refresh method when this element changes size, with out a speical event window is the only element that this gets called on
 		triggerOn: $( window ),
 		
 		//attempt to guess the height of the menu, if not the target element needs to have a height
@@ -102,7 +102,7 @@ $.widget( "jb.overflowmenu", {
 	},
 	
 	
-	resize: function() {
+	refresh: function() {
 		// trigger resize event on window || this.element
 		var $items = this._getItems(),
 			vHeight = this.primaryMenuHeight;
@@ -152,10 +152,10 @@ $.widget( "jb.overflowmenu", {
 			
 			this.options.triggerOn = $( value )
 										.bind( 'resize.overflowmenu', function(){
-											self.resize();
+											self.refresh();
 										})
 										//call to set option
-										self.resize();
+										self.refresh();
 			
 		}else if( key == 'label' && value ){
 			//figure out the width of the hadel and subtract that from the parend with and set that as the right
