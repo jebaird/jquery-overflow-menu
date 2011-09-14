@@ -103,18 +103,28 @@ $.widget( "jb.overflowmenu", {
 	
 	
 	refresh: function() {
-		// trigger resize event on window || this.element
-		var $items = this._getItems(),
-			vHeight = this.primaryMenuHeight;
+		
+		
+		var vHeight = this.primaryMenuHeight,
+			//get the items, filter out the the visible ones
+			itemsToHide = this._getItems()
+							    .css( 'display', '' )
+							    .filter(function(){
+							        return this.offsetTop + $(this).height() > vHeight;
+							    })
+						    
 	    //remove all of the actions out of the overflow menu
-	    this.secondaryMenu.children().remove();
+	    this.secondaryMenu
+	    	.children()
+	    	.remove();
+
+	    itemsToHide
+	    	.clone( true )
+	    	.prependTo( this.secondaryMenu );
+	    	
+	    //hide the orginal items
+	    itemsToHide.css( 'display','none' )
 	    
-	    //find all of the that arent visiable and add/clone them to the overflow menu 
-	    $items.filter(function(){
-	        return this.offsetTop + $(this).height() > vHeight;
-	    })
-	    .clone( true )
-	    .prependTo( this.secondaryMenu );
 	    
 	    this._trigger( 'change', {}, this._uiHash() );
 
