@@ -31,11 +31,9 @@
 	top: auto;
 	bottom: auto;
 	left: auto;
-	
 	display: none;
 	position: absolute;
 	width: 150px;
-	
-	z-index: 100000;
+	z-index: 100;
 	
 }
