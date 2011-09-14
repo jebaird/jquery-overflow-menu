@@ -2,6 +2,13 @@
  * jb overflow menu layout
  */
 
+/*
+ * the widget target must have width and height for this widget to work
+ */
+.jb-overflowmenu {
+	
+}
+
 .jb-overflowmenu-helper-postion {
 	top: 0;
 	right: 0;
@@ -11,15 +18,11 @@
 	position: absolute;
 }
 
-/*
- * in our case ul
- */
+
 .jb-overflowmenu .jb-overflowmenu-menu-primary {
 	/*overflow: hidden; gets set in js we need to detect the height of the menu, then set this */
 	overflow: hidden;
 }
-/*suggested that items are inline block or float with clearfix*/
-/*.jb-overflowmenu .jb-overflowmenu-menu-primary > * {display: inline-block;}*/
 
 /*holds the overflow menu and label*/
 .jb-overflowmenu .jb-overflowmenu-container {
