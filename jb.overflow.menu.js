@@ -41,7 +41,7 @@ $.widget( "jb.overflowmenu", {
 		//attempt to guess the height of the menu, if not the target element needs to have a height
 		guessHeight: true,
 		
-		//called after the all of the menu positions have been recalulated and cloned to there proper menu
+		//called after the all of the menu positions have been recalulated and cloned to their proper menu
 		change: $.noop
 		
 	},
