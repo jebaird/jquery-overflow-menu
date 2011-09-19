@@ -42,7 +42,11 @@ $.widget( "jb.overflowmenu", {
 		guessHeight: true,
 		
 		//called after the all of the menu positions have been recalulated and cloned to their proper menu
-		change: $.noop
+		change: $.noop,
+		
+		closeOn: function(){
+			return true;
+		}
 		
 	},
 
@@ -119,7 +123,7 @@ $.widget( "jb.overflowmenu", {
 	    	.remove();
 
 	    itemsToHide
-	    	.clone( true )
+	    	.clone( true, true )
 	    	.prependTo( this.secondaryMenu );
 	    	
 	    //hide the orginal items
