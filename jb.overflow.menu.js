@@ -94,6 +94,9 @@ $.widget( "jb.overflowmenu", {
 		
 		this.primaryMenu
 			.removeClass('jb-overflowmenu-menu-primary jb-overflowmenu-helper-postion')
+			.find( this.options.items )
+			.filter( ':hidden' )
+			.css( 'display', '' )
 		
 		this.options.triggerOn.unbind( 'resize.overflowmenu' );
 		
