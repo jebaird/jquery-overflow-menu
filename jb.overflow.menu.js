@@ -20,6 +20,13 @@
  * 
  * $('nav').overflowmenu()
  * 
+ * 
+ * 
+ * events
+ * 	change - after items are moved to / from the secondary menu
+ * 	beforeChange - called before items are moved to / from the secondary menu
+ * 	open - when the secondary menu is shown
+ * 	close - when the secondary menu is closed
  */
 
 
@@ -36,17 +43,10 @@ $.widget( "jb.overflowmenu", {
 		itemsParentTag: 'ul',
 		label: 'more',
 		//call the refresh method when this element changes size, with out a speical event window is the only element that this gets called on
-		triggerOn: $( window ),
+		refreshOn: $( window ),
 		
 		//attempt to guess the height of the menu, if not the target element needs to have a height
-		guessHeight: true,
-		
-		//called after the all of the menu positions have been recalulated and cloned to their proper menu
-		change: $.noop,
-		
-		closeOn: function(){
-			return true;
-		}
+		guessHeight: true
 		
 	},
 
@@ -77,13 +77,13 @@ $.widget( "jb.overflowmenu", {
 						
 		this.secondaryMenu = this.secondaryMenuContainer.find('ul');
 		
-		this.secondaryMenuContainer.bind('click.overflowmenu', function(){
-			self.toggle()
-		})
+		this.secondaryMenuContainer.children( 'a' ).bind( 'click.overflowmenu', function( e ){
+			self.toggle();
+		});
 		
 		//has to be set first
 		this._setOption( 'label', this.options.label )
-		this._setOption( 'triggerOn', this.options.triggerOn )
+		this._setOption( 'refreshOn', this.options.refreshOn )
 		
 			
 	},
@@ -98,7 +98,7 @@ $.widget( "jb.overflowmenu", {
 			.filter( ':hidden' )
 			.css( 'display', '' )
 		
-		this.options.triggerOn.unbind( 'resize.overflowmenu' );
+		this.options.resizeOn.unbind( 'resize.overflowmenu' );
 		
 		this.secondaryMenuContainer.remove()
 		
@@ -126,6 +126,7 @@ $.widget( "jb.overflowmenu", {
 	    	.remove();
 
 	    itemsToHide
+	    	//might be a bit slower but we don't know whats in the children elements
 	    	.clone( true, true )
 	    	.prependTo( this.secondaryMenu );
 	    	
@@ -138,16 +139,27 @@ $.widget( "jb.overflowmenu", {
 	},
 	
 	//more menu opitons
-	show: function(){
-		this.secondaryMenuContainer.find('.jb-overflowmenu-menu-secondary').show();
+	
+	open: function(){
+		//TODO: trigger open
+		if( this.secondaryMenu.find( this.options.items ).length == 0){
+			return;
+		}
+		this.secondaryMenu.show();
+		this._trigger( 'open', {}, this._uiHash() );
 	},
-	hide: function(){
-		this.secondaryMenuContainer.find('.jb-overflowmenu-menu-secondary').hide();
+	close: function(){
+		//TODO: trigger close
+		this.secondaryMenu.hide();
+		this._trigger( 'close', {}, this._uiHash() );
 	},
 	toggle: function(){
-		this.secondaryMenuContainer.find('.jb-overflowmenu-menu-secondary').toggle();
+		if( this.secondaryMenu.is( ':visible') ){
+			this.close();
+		}else{
+			this.open();
+		}
 	},
-	
 	_getItems: function(){
 		return this.primaryMenu.find( this.options.items );
 	},
@@ -164,10 +176,10 @@ $.widget( "jb.overflowmenu", {
 	},
 	_setOption: function( key, value ) {
 		var self = this;
-		if( key == 'triggerOn' && value ){
-			this.options.triggerOn.unbind( 'resize.overflowmenu' );
+		if( key == 'refreshOn' && value ){
+			this.options.refreshOn.unbind( 'resize.overflowmenu' );
 			
-			this.options.triggerOn = $( value )
+			this.options.refreshOn = $( value )
 										.bind( 'resize.overflowmenu', function(){
 											self.refresh();
 										})
