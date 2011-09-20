@@ -89,7 +89,7 @@ $.widget( "jb.overflowmenu", {
 			.filter( ':hidden' )
 			.css( 'display', '' )
 		
-		this.options.resizeOn.unbind( 'resize.overflowmenu' );
+		this.options.refreshOn.unbind( 'resize.overflowmenu' );
 		
 		this.secondaryMenuContainer.remove()
 		
