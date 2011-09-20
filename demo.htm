@@ -43,13 +43,13 @@
 		
 		<nav id="target" class="jb-overflowmenu">
 			<ul class="">
-				<li class="item"><a href="#">option one</a></li>
-		        <li class="item"><a href="#">option two</a></li>
-		        <li class="item"><a href="#">option three</a></li>
-		        <li class="item"><a href="#">option four</a></li>
-		        <li class="item"><a href="#">option five</a></li>
-		        <li class="item"><a href="#">option six</a></li>
-		        <li class="item"><a href="#">option seven</a></li>
+				<li class="item"><a href="javascript://">option one</a></li>
+		        <li class="item"><a href="javascript://">option two</a></li>
+		        <li class="item"><a href="javascript://">option three</a></li>
+		        <li class="item"><a href="javascript://">option four</a></li>
+		        <li class="item"><a href="javascript://">option five</a></li>
+		        <li class="item"><a href="javascript://">option six</a></li>
+		        <li class="item"><a href="javascript://">option seven</a></li>
 			</ul>
 			
 		</nav>
@@ -72,6 +72,9 @@
 							handle.css('color', 'gray')
 						}
 						console.log( 'change', ui );
+					},
+					open: function( e, ui ){
+						console.log( 'open' )
 					}
 				});
 				
