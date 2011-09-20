@@ -134,6 +134,9 @@ $.widget( "jb.overflowmenu", {
 	    //hide the orginal items
 	    itemsToHide.css( 'display','none' )
 	    
+	    if( itemsToHide.length == 0 ){
+	    	this.close();
+	    }
 	    
 	    this._trigger( 'change', {}, this._uiHash() );
 
