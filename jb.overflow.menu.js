@@ -111,6 +111,7 @@ $.widget( "jb.overflowmenu", {
 	
 	refresh: function() {
 		
+		this._trigger( 'beforeChange', {}, this._uiHash() );
 		
 		var vHeight = this.primaryMenuHeight,
 			//get the items, filter out the the visible ones
