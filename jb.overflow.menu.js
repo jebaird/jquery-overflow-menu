@@ -29,12 +29,6 @@
  * 	close - when the secondary menu is closed
  */
 
-
-/*
- * TODO: add optoin for menu postion
- * 		setHeight
- * 
- */
 (function( $, undefined ) {
 
 $.widget( "jb.overflowmenu", {
@@ -61,9 +55,7 @@ $.widget( "jb.overflowmenu", {
 						.addClass( 'jb-overflowmenu-menu-primary jb-overflowmenu-helper-postion' );
 		
 		this._setHeight();	
-	
-		
-								
+				
 		//TODO: allow the user to change the markup for this because they might not be using ul -> li
 		this.secondaryMenuContainer = $(
 							[
@@ -84,7 +76,6 @@ $.widget( "jb.overflowmenu", {
 		//has to be set first
 		this._setOption( 'label', this.options.label )
 		this._setOption( 'refreshOn', this.options.refreshOn )
-		
 			
 	},
 
@@ -102,8 +93,7 @@ $.widget( "jb.overflowmenu", {
 		
 		this.secondaryMenuContainer.remove()
 		
-		
-		//TODO: possibly clean up the height + right on the ul
+		//TODO: possibly clean up the height & right on the ul
 		
 		$.Widget.prototype.destroy.apply( this, arguments );
 	},
@@ -145,7 +135,6 @@ $.widget( "jb.overflowmenu", {
 	//more menu opitons
 	
 	open: function(){
-		//TODO: trigger open
 		if( this.secondaryMenu.find( this.options.items ).length == 0){
 			return;
 		}
@@ -153,7 +142,6 @@ $.widget( "jb.overflowmenu", {
 		this._trigger( 'open', {}, this._uiHash() );
 	},
 	close: function(){
-		//TODO: trigger close
 		this.secondaryMenu.hide();
 		this._trigger( 'close', {}, this._uiHash() );
 	},
@@ -202,7 +190,6 @@ $.widget( "jb.overflowmenu", {
 		
 		$.Widget.prototype._setOption.apply( this, arguments );
 	},
-	
 	_uiHash: function(){
 		return {
 			pirmary: this.primaryMenu,
