@@ -129,7 +129,7 @@ $.widget( "jb.overflowmenu", {
 	    }
 	    
 	    this._trigger( 'change', {}, this._uiHash() );
-
+		return this;
 	},
 	
 	//more menu opitons
@@ -140,10 +140,12 @@ $.widget( "jb.overflowmenu", {
 		}
 		this.secondaryMenu.show();
 		this._trigger( 'open', {}, this._uiHash() );
+		return this;
 	},
 	close: function(){
 		this.secondaryMenu.hide();
 		this._trigger( 'close', {}, this._uiHash() );
+		return this;
 	},
 	toggle: function(){
 		if( this.secondaryMenu.is( ':visible') ){
@@ -151,6 +153,7 @@ $.widget( "jb.overflowmenu", {
 		}else{
 			this.open();
 		}
+		return this;
 	},
 	_getItems: function(){
 		return this.primaryMenu.find( this.options.items );
