@@ -195,7 +195,7 @@ $.widget( "jb.overflowmenu", {
 	},
 	_uiHash: function(){
 		return {
-			pirmary: this.primaryMenu,
+			primary: this.primaryMenu,
 			secondary: this.secondaryMenu,
 			container: this.secondaryMenuContainer 
 		};
