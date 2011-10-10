@@ -1,0 +1,112 @@
+<html>
+  <head>
+    
+    
+    
+<!--     app files  -->
+
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
+		<script type="text/javascript" src="../jb.overflow.menu.js"></script>
+		
+		<!-- 		include your own reset -->
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssreset/reset-min.css">
+		
+		<link rel="stylesheet" type="text/css" href="../jb.overflow.menu.css" />
+		
+		<style type="text/css">
+			#wrapper{
+				margin: 20px;
+				width: 250px;
+				
+			}
+			.jb-overflowmenu {
+				position: relative;
+			}
+			.item {
+				padding: 0px 8px;
+				display: inline-block;
+			}
+			.jb-overflowmenu-menu-secondary{
+				text-align: right;
+				border: 1px solid black;
+			}
+		
+		</style>
+		
+		
+		<link href='qunit/qunit.css' type='text/css' rel='stylesheet' />
+    <script src='qunit/qunit.js' type='text/javascript' ></script>
+    <script src='jboverflowmenu_core.js' type='text/javascript'></script>
+    <script src='jboverflowmenu_methods.js' type='text/javascript'></script>
+	<script src='jboverflowmenu_events.js' type='text/javascript'></script>	
+		
+    
+    <title>jb overflow menu Test Suite</title>
+  </head>
+  <body>
+    <h1 id="qunit-header">jb overflow menu Test Suite</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+  </body>
+  
+  
+  
+<!--   test html  -->
+		<div id="wrapper" class="f2">
+		<div><h1>Jb overflow menu</h1>
+		<p>If you see seven menu options, resize your browser window till one of the them is hidden. You will see the more text turn from black/gray depending of if there is a menu options hidden in the overflow menu. Click on the more to view the options.</p></div>
+		
+		<p> For this to work you have to set a height for the ul, or have </p>
+		
+		<nav id="target" class="jb-overflowmenu">
+			<ul class="">
+				<li class="item"><a href="javascript://">option one</a></li>
+		        <li class="item"><a href="javascript://">option two</a></li>
+		        <li class="item"><a href="javascript://">option three</a></li>
+		        <li class="item"><a href="javascript://">option four</a></li>
+		        <li class="item"><a href="javascript://">option five</a></li>
+		        <li class="item"><a href="javascript://">option six</a></li>
+		        <li class="item"><a href="javascript://">option seven</a></li>
+			</ul>
+			
+		</nav>
+		
+		
+		<br>
+		<a class="destroy" href="javascript://"> destroy</a> 
+		
+		</div>
+		
+		
+		<script type="text/javascript">
+			$( document ).ready(function(){
+				
+				var target = $('#target').overflowmenu({
+					change: function( e, ui ){
+						var handle = ui.container.find('.jb-overflowmenu-menu-secondary-handle');
+						if( ui.secondary.children().length ){
+							handle.css('color', 'black')
+						}else{
+							handle.css('color', 'gray')
+						}
+						console.log( 'change', ui );
+					},
+					open: function( e, ui ){
+						console.log( 'open' )
+					}
+				});
+				
+				$('.destroy').click(function(){
+					target.overflowmenu('destroy');
+					return false;
+				})
+			})
+			
+		</script>
+  
+  
+</html>
