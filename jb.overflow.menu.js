@@ -40,7 +40,21 @@ $.widget( "jb.overflowmenu", {
 		refreshOn: $( window ),
 		
 		//attempt to guess the height of the menu, if not the target element needs to have a height
-		guessHeight: true
+		guessHeight: true,
+		//clone helper, since http://api.jquery.com/clone/ still keeps a reference to the orgainal data if its an object or an array, you many need to add your own cloning method by doing something like this:
+		/*
+		 * lifted from  http://api.jquery.com/clone/ 
+		 *
+		 * var $elem = $('#elem').data( "arr": [ 1 ] ), // Original element with attached data
+		    $clone = $elem.clone( true )
+		    .data( "arr", $.extend( [], $elem.data("arr") ) ); // Deep copy to prevent data sharing
+		 *
+		 * elements are a jquery collection of items  that will be displayed in the secondaryMenu
+		 * has to return a jquery collection
+		 */
+		clone: function( $elements ){
+			return $elements.clone( true, true )
+		}
 		
 	},
 
@@ -115,11 +129,10 @@ $.widget( "jb.overflowmenu", {
 	    this.secondaryMenu
 	    	.children()
 	    	.remove();
-
-	    itemsToHide
-	    	//might be a bit slower but we don't know whats in the children elements
-	    	.clone( true, true )
-	    	.prependTo( this.secondaryMenu );
+	    	
+	    this.options.clone.apply( this, [ itemsToHide ] )
+	    	.prependTo( this.secondaryMenu );	
+	    	
 	    	
 	    //hide the orginal items
 	    itemsToHide.css( 'display','none' )
