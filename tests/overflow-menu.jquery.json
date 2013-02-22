@@ -1,0 +1,34 @@
+{
+	"name": "overflow-menu",
+	"title": "Overflow Menu",
+	"description": "jQuery UI plugin that manages visible items in a menu, puts the non-visible items in a drop down menu",
+	"keywords": ["menu", "overflow", "responsive", "navigation"],
+	"version": "1.0",
+	"author": {
+		"name": "Jesse Baird",
+		"url": "http://jebaird.com"
+	},
+	"maintainers": [
+		{
+			"name": "Jesse Baird",
+			"email": "jebaird@gmail.com"
+			"url": "http://jebaird.com"
+		}
+	],
+	"licenses": [
+		{
+			"type": "MIT"
+		},
+		{
+			"type": "GPLv2"
+		}
+	],
+	"bugs": "https://github.com/jebaird/jquery-overflow-menu/issues",
+	"homepage": "http://jebaird.com/blog/overflow-menu-jquery-ui-widget",
+	"docs": "http://jebaird.com/blog/overflow-menu-jquery-ui-widget",
+	"download": "https://github.com/jebaird/jquery-overflow-menu/",
+	"dependencies": {
+		"jquery": ">=1.5",
+		"jquery-ui": ">=1.8.18"
+	}
+}
