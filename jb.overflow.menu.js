@@ -36,12 +36,12 @@ $.widget( "jb.overflowmenu", {
 		items: '> *',
 		itemsParentTag: 'ul',
 		label: 'more',
-		//call the refresh method when this element changes size, with out a speical event window is the only element that this gets called on
+		//call the refresh method when this element changes size, with out a special event window is the only element that this gets called on
 		refreshOn: $( window ),
 		
 		//attempt to guess the height of the menu, if not the target element needs to have a height
 		guessHeight: true,
-		//clone helper, since http://api.jquery.com/clone/ still keeps a reference to the orgainal data if its an object or an array, you many need to add your own cloning method by doing something like this:
+		//clone helper, since http://api.jquery.com/clone/ still keeps a reference to the original data if its an object or an array, you many need to add your own cloning method by doing something like this:
 		/*
 		 * lifted from  http://api.jquery.com/clone/ 
 		 *
@@ -134,7 +134,7 @@ $.widget( "jb.overflowmenu", {
 	    	.prependTo( this.secondaryMenu );	
 	    	
 	    	
-	    //hide the orginal items
+	    //hide the original items
 	    itemsToHide.css( 'display','none' )
 	    
 	    if( itemsToHide.length == 0 ){
