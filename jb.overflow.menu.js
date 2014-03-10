@@ -194,15 +194,15 @@ $.widget( "jb.overflowmenu", {
             this.secondaryMenu
                 .children()
                 .remove();
-                
+            //hide the orginal items
+            itemsToHide.addClass('placeholder');    
+            
             this.options.clone.apply( this, [ itemsToHide ] )
                 .prependTo( this.secondaryMenu );   
-                
-                
-            //hide the orginal items
-            itemsToHide.addClass('placeholder');
             
-             
+            this.secondaryMenu.find('li').removeClass('placeholder');    
+            
+            
             if( itemsToHide.length == 0 )
             {
                 this.close();
@@ -257,7 +257,9 @@ $.widget( "jb.overflowmenu", {
             
             this.options.refreshOn = $( value )
                                         .bind( 'resize.overflowmenu', function(){
+                                            self.options.cloneItems = true;
                                             self.refresh();
+                                            self.options.cloneItems = false;
                                         })
                                         //call to set option
                                         self.refresh();
