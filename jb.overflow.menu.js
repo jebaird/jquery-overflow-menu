@@ -40,7 +40,7 @@ $.widget( "jb.overflowmenu", {
         refreshOn: $( window ),
         
         //attempt to guess the height of the menu, if not the target element needs to have a height
-        guessHeight: true,
+        guessHeight: true
     },
 
     _create: function() {
