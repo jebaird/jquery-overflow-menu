@@ -144,34 +144,29 @@
 	
 	
 	
-	test('state', function(){
-		componetn
+	
+	
+	
+	
+	test( 'method - open', function(){
 		
-		ok( state, compont.state(0) )
+		
+		
+		
+		var $target = $( '#target').overflowmenu()getWidget();
+		
+		widget.open()
+		
+		ok( widget.secondaryMenu.is(':visible') )
 	})
 	
-	
-	
-	
-	// test( 'method - open', function(){
-// 		
-// 		
-		// $
-// 		
-		// var $target = $( '#target').overflowmenu()getWidget();
-// 		
-		// widget.open()
-// 		
-		// ok( widget.secondaryMenu.is(':visible') )
-	// })
-// 	
-	// test( 'method - close', function(){
-		// var widget = getWidget();
-// 		
-		// widget.close()
-// 		
-		// ok( widget.secondaryMenu.is(':hidden') )
-	// })
+	test( 'method - close', function(){
+		var widget = getWidget();
+		
+		widget.close()
+		
+		ok( widget.secondaryMenu.is(':hidden') )
+	})
 		
 	
 })( jQuery );
