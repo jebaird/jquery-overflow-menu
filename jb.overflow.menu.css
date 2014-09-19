@@ -36,7 +36,7 @@
     left: auto;
     display: none;
     position: absolute;
-    width: 150px;
+    min-width: 150px;
     z-index: 100;
     
 }
