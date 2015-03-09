@@ -36,9 +36,9 @@
     left: auto;
     display: none;
     position: absolute;
-    min-width: 150px;
+    min-width: 15em;
     z-index: 100;
-    max-height: 500px;
+    max-height: 44em;
     overflow: auto;
     
 }
