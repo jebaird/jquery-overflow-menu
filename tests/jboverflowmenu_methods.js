@@ -23,7 +23,7 @@
 		$( '<div><ul><li>one</li><ul></div>' )
 			.appendTo('body')
 			.overflowmenu()
-			.overflowmenu('destory')
+			.overflowmenu('destroy')
 			.remove()
 			
 		ok( true, '.overflowmenu() called on element ')

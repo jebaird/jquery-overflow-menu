@@ -119,10 +119,10 @@ test( 'click on handle secondary menu shows up if there are items in it', functi
 // })
 
 
-test( 'destory', function(){
+test( 'destroy', function(){
 	
 	
-	//fifure out a way to test this, calling destory makes the over tests fail
+	//fifure out a way to test this, calling destroy makes the over tests fail
 	// getWidget().destroy();
 // 	
 	// var target = $( '#target' );
